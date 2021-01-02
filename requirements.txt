@@ -1,0 +1,2 @@
+ffmpeg_python==0.2.0
+pywin32==300
