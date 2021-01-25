@@ -17,7 +17,7 @@ swf_folder = root_folder + '/swf'
 glob_filter = swf_folder + '/*.swf'
 output_folder = 'png/'
 RECURSIVE = False
-
+flashplayertitle = 'Adobe Flash Player 32'
 
 def runplayer(fname):
     cmd_player = 'util/flashplayer_32_sa.exe {}'.format(fname)
@@ -27,7 +27,7 @@ def runplayer(fname):
 
 def killall():
     while True:
-        trash = win32gui.FindWindow(None, r'Adobe Flash Player 32')
+        trash = win32gui.FindWindow(None, flashplayertitle)
         if trash:
             print('process found: ', trash)
             win32gui.PostMessage(trash, win32con.WM_CLOSE, 0, 0)
@@ -38,7 +38,7 @@ def killall():
 
 
 def modifywindow():
-    hwnd = win32gui.FindWindow(None, r'Adobe Flash Player 32')
+    hwnd = win32gui.FindWindow(None, flashplayertitle)
     win32gui.SetForegroundWindow(hwnd)
 
     dimensions = win32gui.GetClientRect(hwnd)
@@ -62,7 +62,7 @@ def modifywindow():
 def renderpng(outputfname):
     (
         ffmpeg
-        .input(format='gdigrab', framerate=5, draw_mouse=0, filename="title=Adobe Flash Player 32")
+        .input(format='gdigrab', framerate=5, draw_mouse=0, filename = f'title={flashplayertitle}')
         .output(outputfname, vframes=1)
         .run(quiet=True, overwrite_output=True)
     )
