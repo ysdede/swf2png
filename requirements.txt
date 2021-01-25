@@ -1,2 +1,2 @@
-ffmpeg_python==0.2.0
-pywin32==300
+pywin32
+ffmpeg-python # https://github.com/kkroening/ffmpeg-python
