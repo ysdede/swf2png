@@ -21,8 +21,7 @@ flashplayertitle = 'Adobe Flash Player 32'
 
 def runplayer(fname):
     cmd_player = 'util/flashplayer_32_sa.exe {}'.format(fname)
-    process = subprocess.Popen(cmd_player, shell=False)
-    return process
+    return subprocess.Popen(cmd_player, shell=False)
 
 
 def killall():
